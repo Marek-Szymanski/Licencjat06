@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../projektDekorator.xhtml">
+
+            <ui:define name="top">
+                <div align="center">
+                    <h:form>
+                        <p:panel styleClass="panelStylTop">
+                            <h2><h:outputText value="Panel administratora #{osobakontroler.osoba.imie}" styleClass="TekstStylTop"/></h2>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <div align="center">
+                    <h:form>
+                        <p:panel styleClass="panelStylCenter">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:commandButton value="Profil" action="administratorProfil" style="width: 120px; height: 120px; border-radius: 90px 90px 90px 90px; font-size: 20px"/>
+                                <p:commandButton value="Użytkownicy" action="spisUzytkownikow"  style="width: 120px; height: 120px; border-radius: 90px 90px 90px 90px; font-size: 15px"/>
+                                <p:commandButton value="Kursy" action="edycjaBazy" style="width: 120px; height: 120px; border-radius: 90px 90px 90px 90px; font-size: 20px"/>
+                                <p:commandButton value="Wyloguj" action="#{kontroler.wyloguj()}" style="width: 120px; height: 120px; border-radius: 90px 90px 90px 90px; font-size: 20px"/>
+                            </h:panelGrid>                            
+                        </p:panel>                    
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

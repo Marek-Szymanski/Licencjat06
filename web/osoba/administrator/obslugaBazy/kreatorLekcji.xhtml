@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../projektDekorator.xhtml">
+
+            <ui:define name="top">
+                <div align="center">
+                    <h:form id="formTop">
+                        <p:panel>
+                            <h:outputText value="#{kontroler.widok.setFalse()}"/>
+                            <h:outputText value="Generator Lekcji"/>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <div align="center">
+                    <h:form id="form">
+                        <p:panel>
+                            <h:panelGrid columns="5" cellpadding="5">
+                                <p:commandButton value="Dodaj element 1" action="#{kontroler.wybranoPanelLekcji(1, true)}" update="form" rendered="#{!kontroler.widok.panelLekcji1}"/>
+                                <p:commandButton value="Usuń element 1" action="#{kontroler.wybranoPanelLekcji(1, false)}" update="form" rendered="#{kontroler.widok.panelLekcji1}"/>
+                                <p:commandButton value="Dodaj element 2" action="#{kontroler.wybranoPanelLekcji(2, true)}" update="form" rendered="#{!kontroler.widok.panelLekcji2}"/>
+                                <p:commandButton value="Usuń element 2" action="#{kontroler.wybranoPanelLekcji(2, false)}" update="form" rendered="#{kontroler.widok.panelLekcji2}"/>
+                                <p:commandButton value="Dodaj element 3" action="#{kontroler.wybranoPanelLekcji(3, true)}" update="form" rendered="#{!kontroler.widok.panelLekcji3}"/>
+                                <p:commandButton value="Usuń element 3" action="#{kontroler.wybranoPanelLekcji(3, false)}" update="form" rendered="#{kontroler.widok.panelLekcji3}"/>
+                                <p:commandButton value="Dodaj element 4" action="#{kontroler.wybranoPanelLekcji(4, true)}" update="form" rendered="#{!kontroler.widok.panelLekcji4}"/>
+                                <p:commandButton value="Usuń element 4" action="#{kontroler.wybranoPanelLekcji(4, false)}" update="form" rendered="#{kontroler.widok.panelLekcji4}"/>
+                                <p:commandButton value="Dodaj element 5" action="#{kontroler.wybranoPanelLekcji(5, true)}" update="form" rendered="#{!kontroler.widok.panelLekcji5}"/>
+                                <p:commandButton value="Usuń element 5" action="#{kontroler.wybranoPanelLekcji(5, false)}" update="form" rendered="#{kontroler.widok.panelLekcji5}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" cellpadding="5" style="margin-top: 1%">
+                                <h:outputText value="Nazwak Lekcji:"/>
+                                <h:inputText value="#{lekcjakontroler.lekcja.nazwa}"/>
+                            </h:panelGrid>
+                    <!--Panel lekcyjny 1-->
+                            <p:panel rendered="#{kontroler.widok.panelLekcji1}">
+                                <h1><h:outputText value="Panel lekcyjny 1"/></h1>
+                                <h:panelGrid columns="2" cellpadding="5">                              
+                                    <h:outputLabel value="Tytul:" for="tytul1" />
+                                    <h:inputText id="tytul1" value="#{lekcjakontroler.lekcja.tytul1}" title="Tytul1" />
+                                    <h:outputLabel value="Tresc:" for="tresc1" />
+                                    <h:inputTextarea id="tresc1" value="#{lekcjakontroler.lekcja.tresc1}" title="Tresc1" />
+                                </h:panelGrid>
+                            </p:panel>
+                    <!--Panel lekcyjny 2-->
+                            <p:panel rendered="#{kontroler.widok.panelLekcji2}" style="margin-top: 1%">
+                                <h1><h:outputText value="Panel lekcyjny 2"/></h1>
+                                <h:panelGrid columns="1" cellpadding="5">                              
+                                    <h:outputLabel value="Tytul:" for="tytul2" />
+                                    <h:inputText id="tytul2" value="#{lekcjakontroler.lekcja.tytul2}" title="Tytul2" />                           
+                                    <h:outputLabel value="Tresc:" for="tresc2" />
+                                    <h:inputTextarea id="tresc2" value="#{lekcjakontroler.lekcja.tresc2}" title="Tresc2" />
+                                </h:panelGrid>
+                            </p:panel>
+                    <!--Panel lekcyjny 3-->
+                            <p:panel rendered="#{kontroler.widok.panelLekcji3}" style="margin-top: 1%">
+                                <h1><h:outputText value="Panel lekcyjny 3"/></h1>
+                                <h:panelGrid columns="1" cellpadding="5">                              
+                                    <h:outputLabel value="Tytul:" for="tytul3" />
+                                    <h:inputText id="tytul3" value="#{lekcjakontroler.lekcja.tytul3}" title="Tytul3" />                            
+                                    <h:outputLabel value="Tresc:" for="tresc3" />
+                                    <h:inputTextarea id="tresc3" value="#{lekcjakontroler.lekcja.tresc3}" title="Tresc3" />
+                                </h:panelGrid>
+                            </p:panel>
+                    <!--Panel lekcyjny 4-->
+                            <p:panel rendered="#{kontroler.widok.panelLekcji4}" style="margin-top: 1%">
+                                <h1><h:outputText value="Panel lekcyjny 4"/></h1>
+                                <h:panelGrid columns="1" cellpadding="5">                              
+                                    <h:outputLabel value="Tytul:" for="tytul4" />
+                                    <h:inputText id="tytul4" value="#{lekcjakontroler.lekcja.tytul4}" title="Tytul4" />
+                                    <h:outputLabel value="Tresc:" for="tresc4" />
+                                    <h:inputTextarea id="tresc4" value="#{lekcjakontroler.lekcja.tresc4}" title="Tresc4" />
+                                </h:panelGrid>
+                            </p:panel>
+                    <!--Panel lekcyjny 5-->
+                            <p:panel rendered="#{kontroler.widok.panelLekcji5}" style="margin-top: 1%">
+                                <h1><h:outputText value="Panel lekcyjny 5"/></h1>
+                                <h:panelGrid columns="1" cellpadding="5">                              
+                                    <h:outputLabel value="Tytul:" for="tytul5" />
+                                    <h:inputText id="tytul5" value="#{lekcjakontroler.lekcja.tytul5}" title="Tytul5" />
+                                    <h:outputLabel value="Tresc:" for="tresc5" />
+                                    <h:inputTextarea id="tresc5" value="#{lekcjakontroler.lekcja.tresc5}" title="Tresc5" />
+                                </h:panelGrid>
+                            </p:panel>
+                            
+                            <p:commandButton value="Dalej" style="width: 100%" action="uploadObrazkow.xhtml"/>
+                            
+                            <p:dialog widgetVar="obrazki" header="Dodaj obrazki do wybranych sekcji" resizable="true" modal="true" showEffect="fade" hideEffect="explode">
+                                
+                            </p:dialog>
+                        </p:panel>
+                    </h:form>
+                        
+                </div>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

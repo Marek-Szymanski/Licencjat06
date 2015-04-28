@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../projektDekorator.xhtml">
+
+            <ui:define name="top">
+                <div align="center">
+                    <h:form>
+                        <p:panel styleClass="panelStylTopMenu">
+                            <h:outputText value="Twój profil" styleClass="TekstStylTop"/>
+                            <h:outputText value="#{kontroler.widok.setFalse()}"/>
+                        
+                            <h:panelGrid columns="4" cellpadding="5">
+                                <p:commandButton value="Start" action="uczenStart"/>
+                                <p:commandButton value="Profil" action="uczenProfil"/>
+                                <p:commandButton value="Kursy" action="spisKursow"/>
+                                <p:commandButton value="Wyloguj" action="#{kontroler.wyloguj()}"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <div align="center">
+                        <h:form>
+                            <p:panel id="panelProfil" styleClass="panelStylTresc">
+                                <h:panelGrid columns="2" cellpadding="5px" style="font-size: 120%; font-weight: bolder">                         
+                                    <h:outputLabel value="Imie:" for="imie" />
+                                    <h:outputText id="imie_out" value="#{osobakontroler.osoba.imie}" title="Imie" />                                    
+                                    <h:outputLabel value="Nazwisko:" for="nazwisko" />
+                                    <h:outputText id="nazwisko_out" value="#{osobakontroler.osoba.nazwisko}" title="Nazwisko" />                                    
+                                    <h:outputLabel value="Mail:" for="mail" />
+                                    <h:outputText id="mail_out" value="#{osobakontroler.osoba.mail}" title="Mail" />                                   
+                                    <h:outputLabel value="Login:" for="login" />
+                                    <h:outputText id="login_out" value="#{osobakontroler.osoba.login}" title="Login" />      
+                                    <h:outputLabel value="Stare haslo:" for="haslo" rendered="#{kontroler.widok.administratorEdytujProfil}" />
+                                    <h:inputText id="haslo_in1" value="#{osobakontroler.haslo0}" title="Haslo" rendered="#{kontroler.widok.administratorEdytujProfil}" />
+                                    <h:outputLabel value="Nowe haslo:" for="haslo" rendered="#{kontroler.widok.administratorEdytujProfil}" />
+                                    <h:inputText id="haslo_in2" value="#{osobakontroler.haslo1}" title="Haslo" rendered="#{kontroler.widok.administratorEdytujProfil}" />
+                                    <h:outputLabel value="Jeszcze raz:" for="haslo" rendered="#{kontroler.widok.administratorEdytujProfil}" />
+                                    <h:inputText id="haslo_in3" value="#{osobakontroler.haslo2}" title="Haslo" rendered="#{kontroler.widok.administratorEdytujProfil}" />
+                                    <f:facet name="footer">
+                                        <p:commandLink value="Zmień hasło" action="#{kontroler.widok.edytujProfil()}" style="width: 100%" rendered="#{!kontroler.widok.administratorEdytujProfil}" update="panelProfil"/>
+                                        <p:commandButton value="Zapisz" action="#{kontroler.zmienHaslo()}" style="width: 100%" rendered="#{kontroler.widok.administratorEdytujProfil}" update="panelProfil" />
+                                    </f:facet>
+                                </h:panelGrid>
+                            </p:panel>
+                        </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

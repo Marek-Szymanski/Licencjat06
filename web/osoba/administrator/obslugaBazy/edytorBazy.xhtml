@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../projektDekorator.xhtml">
+
+            <ui:define name="top">
+                <div align="center">
+                    <h:form>
+                        <p:panel styleClass="panelStylTop">
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <h:column>
+                                    <div align="left">
+                                        <p:commandButton value="Wróć" action="administratorMenu" style="border-radius: 90px 90px 90px 90px; width: 100%"/>
+                                    </div>
+                                </h:column>
+                                <f:facet name="header">
+                                    <div align="center">
+                                       <h:outputText value="Generator kursów" styleClass="TekstStylTop"/>
+                                        <p:separator style="width: 100%"/>
+                                    </div>
+                                </f:facet>
+                                <h:column>
+                                    <div align="right">
+                                        <p:commandButton value="Wyloguj" action="#{kontroler.wyloguj()}" style="border-radius: 90px 90px 90px 90px; width: 100%"/>
+                                    </div>
+                                </h:column>
+                            </h:panelGrid>      
+                            <h:outputText value="#{kontroler.widok.setFalse()}"/>
+                            <h:outputText value="#{kontroler.wyzerujObiekty()}"/>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+            
+
+            <ui:define name="content">
+                <div align="center">
+                    <h:form id="form">
+                        <h:panelGrid columns="4" cellpadding="5">
+                            <p:menuButton value="Kategoria">
+                                <p:menuitem value="Wyświetl wszystkie" actionListener="#{kontroler.widok.wyswietlKategorie()}" update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Dodaj" actionListener="#{kontroler.widok.dodajKategorie()}" update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Edytuj" actionListener="#{kontroler.widok.edytujKategorie()}" update="form" icon="ui-icon-disk"/>
+                            </p:menuButton>
+                            <p:menuButton value="Kurs">
+                                <p:menuitem value="Wyświetl wszystkie" actionListener="#{kontroler.widok.wyswietlKursy()}"  update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Dodaj" actionListener="#{kontroler.widok.dodajKursy()}" update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Edytuj" actionListener="#{kontroler.widok.edytujKursy()}" update="form" icon="ui-icon-disk"/>
+                            </p:menuButton>
+                            <p:menuButton value="Lekcja">
+                                <p:menuitem value="Wyświetl wszystkie" actionListener="#{kontroler.widok.wyswietlLekcje()}"  update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Dodaj" actionListener="#{kontroler.widok.dodajLekcje()}" update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Edytuj" actionListener="#{kontroler.widok.edytujLekcje()}" update="form" icon="ui-icon-disk"/>
+                            </p:menuButton>
+                            <p:menuButton value="Pytanie">
+                                <p:menuitem value="Wyświetl wszystkie" actionListener="#{kontroler.widok.wyswietlPytania()}"  update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Dodaj" actionListener="#{kontroler.widok.dodajPytania()}" update="form" icon="ui-icon-disk"/>
+                                <p:menuitem value="Edytuj" actionListener="#{kontroler.widok.edytujPytania()}" update="form" icon="ui-icon-disk"/>
+                            </p:menuButton>
+                        </h:panelGrid>
+                        
+                <!-- Lista -->
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wybierz and kontroler.widok.kategoria}">
+                            <h:outputText value="#{kategoriakontroler.pobierzWszystkieKategorie()}"/> 
+                            <h:selectOneMenu value="#{kategoriakontroler.tempID}">
+                                <f:selectItems value="#{kategoriakontroler.kategoriaList}" var="c"
+                                               itemLabel="#{c.nazwa}" itemValue="#{c.id}" />
+                            </h:selectOneMenu>
+                            <p:commandButton value="Wybierz kategorie" action="#{kontroler.wybierzKategorie()}" update="form"/>
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wybierz and kontroler.widok.kurs}">
+                            <h:outputText value="#{kontroler.pobierzWszystkieKursyZKategorii()}"/>
+                            <h:selectOneMenu value="#{kurskontroler.tempID}">
+                                <f:selectItems value="#{kurskontroler.kursList}" var="c"
+                                               itemLabel="#{c.nazwa}" itemValue="#{c.id}" />
+                            </h:selectOneMenu>
+                            <p:commandButton value="Wybierz Kurs" action="#{kontroler.wybierzKurs()}" update="form"/>
+                            <h2><h:outputText value="Wybrana Kategoria jest pusta" rendered="#{kurskontroler.kursList.size() eq  0}"/></h2>
+                            <p:commandButton value="Wybierz inną" action="#{kontroler.widok.wybierzKategorie()}" update="form" rendered="#{kurskontroler.kursList.size() eq  0}"/>
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wybierz and kontroler.widok.lekcja}">
+                            <h:outputText value="#{kontroler.pobierzWszystkieLecjeZKursu()}"/>
+                            <h:selectOneMenu value="#{lekcjakontroler.tempID}">
+                                <f:selectItems value="#{lekcjakontroler.lekcje}" var="c"
+                                               itemLabel="#{c.nazwa}" itemValue="#{c.id}" />
+                            </h:selectOneMenu>
+                            <p:commandButton value="Wybierz Lekcje" action="#{kontroler.wybierzLekcje()}" update="form"/>
+                            <h2><h:outputText value="Wybrany Kurs jest pusty" rendered="#{lekcjakontroler.lekcje.size() eq  0}"/></h2>
+                            <p:commandButton value="Wybierz inny kurs" action="#{kontroler.widok.wybierzKursy()}" update="form" rendered="#{lekcjakontroler.lekcje.size() eq  0}"/>
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wybierz and kontroler.widok.pytanie}">
+                            <p:commandButton value="Wybierz Pytanie" action="#{kontroler.widok.wybranoPytanie()}" update="form"/>
+                        </p:panel>
+                    
+                <!-- Dodawanie -->
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.dodaj and kontroler.widok.kategoria}">                       
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nazwa:" for="nazwa_dodajKategorie" />
+                                <h:inputText id="nazwa_dodajKategorie" value="#{kategoriakontroler.kategoria.nazwa}" title="Nazwa" />
+                                <p:commandButton value="Zapisz" action="#{kontroler.zapiszKategorie()}" update="form" style="width: 100%"/>
+                            </h:panelGrid>                                
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.dodaj and kontroler.widok.kurs}">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nazwa:" for="nazwa_dodajKurs" />
+                                <h:inputText id="nazwa_dodajKurs" value="#{kurskontroler.kurs.nazwa}" title="Nazwa" />
+                                <h:outputLabel value="Opis:" for="opis_dodajKurs" />
+                                <h:inputTextarea id="opis_dodajKurs" value="#{kurskontroler.kurs.opis}" readonly="false" title="Opis" />
+                                <f:facet name="footer">
+                                    <p:commandButton value="Zapisz" action="#{kontroler.zapiszKurs()}" update="form" style="width: 100%"/>
+                                </f:facet>
+                            </h:panelGrid>
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.dodaj and kontroler.widok.lekcja}">
+                            
+                            
+                            <p:commandButton value="Idź do generatora lekcji" action="#{kontroler.idzDoDodaniaLekcji()}"/>
+                            
+                        </p:panel>
+                        
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.dodaj and kontroler.widok.pytanie}">
+                            dodaj pytanie
+                        </p:panel>
+                    
+                <!-- Edycja -->
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.edytuj and kontroler.widok.kategoria}">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nazwa:" for="nazwa_edytujKategoria" />
+                                <h:inputText id="nazwa_edytujKategoria" value="#{kategoriakontroler.kategoria.nazwa}" title="Nazwa" />
+                                <f:facet name="footer">
+                                    <p:commandButton value="Edytuj" action="#{kontroler.edytujKategorie()}"  update="form" style="width: 100%" />
+                                </f:facet>                              
+                            </h:panelGrid>    
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.edytuj and kontroler.widok.kurs}">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Nazwa:" for="nazwa_edytujKurs" />
+                                <h:inputText id="nazwa_edytujKurs" value="#{kurskontroler.kurs.nazwa}" title="Nazwa" />
+                                <h:outputLabel value="Opis:" for="opis_edytujKurs" />
+                                <h:inputTextarea id="opis_edytujKurs" cols="25" rows="15" value="#{kurskontroler.kurs.opis}" readonly="false" title="Opis2" />
+                                <f:facet name="footer">
+                                    <p:commandButton value="Edytuj" action="#{kontroler.edytujKurs()}" update="form" style="width: 100%"/>
+                                </f:facet>
+                            </h:panelGrid>                                
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.edytuj and kontroler.widok.lekcja}">
+                            <p:commandButton value="Idź do generatora lekcji" action="#{kontroler.idzDoEdycjiLekcji()}"/>
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.edytuj and kontroler.widok.pytanie}">
+                            edytuj pytanie
+                        </p:panel>
+                    
+                <!-- Wyswietlanie -->
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wyswietl and kontroler.widok.kategoria}">
+                            <h:outputText value="#{kategoriakontroler.pobierzWszystkieKategorie()}"/>                           
+                            <h:dataTable value="#{kategoriakontroler.kategoriaList}" var="item">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nazwa"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nazwa}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wyswietl and kontroler.widok.kurs}">
+                            <h:outputText value="#{kurskontroler.pobierzWszystkieKursy()}"/>
+                            <h:outputText value="#{kontroler.pobierzWszystkieKursyZKategorii()}" rendered="#{kontroler.widok.edytuj or kontroler.widok.dodaj}"/>
+                            <h:dataTable value="#{kurskontroler.kursList}" var="item">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nazwa"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nazwa}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Opis"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.opis}"/>
+                                </h:column>
+                            </h:dataTable>                          
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wyswietl and kontroler.widok.lekcja}">
+                            <h:outputText value="#{lekcjakontroler.wszystkieLekcje()}"/>
+                            <h:outputText value="#{kontroler.pobierzWszystkieLecjeZKursu()}" rendered="#{kontroler.widok.edytuj or kontroler.widok.dodaj}"/>
+                            <h:dataTable value="#{lekcjakontroler.lekcje}" var="item">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nazwa"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nazwa}"/>
+                                </h:column>
+                            </h:dataTable>                  
+                        </p:panel>
+                        <p:panel styleClass="panelStylTresc" rendered="#{kontroler.widok.wyswietl and kontroler.widok.pytanie}">
+                            Wyswietl pytanie
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

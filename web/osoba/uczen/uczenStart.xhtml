@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../projektDekorator.xhtml">
+
+            <ui:define name="top">
+                <div align="center">
+                    <h:form>
+                        <p:panel styleClass="panelStylTop">
+                            <h:outputText value="Witaj #{osobakontroler.osoba.imie}" styleClass="TekstStylTop"/>
+                        
+                            <h:panelGrid columns="4" cellpadding="5">
+                                <p:commandButton value="Start" action="uczenStart" style="border-radius: 25px 25px 25px 25px"/>
+                                <p:commandButton value="Profil" action="uczenProfil" style="border-radius: 25px 25px 25px 25px"/>
+                                <p:commandButton value="Kursy" action="spisKursow" style="border-radius: 25px 25px 25px 25px"/>
+                                <p:commandButton value="Wyloguj" action="#{kontroler.wyloguj()}" style="border-radius: 25px 25px 25px 25px"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <p:panel styleClass="panelStylTresc">
+                        Moje kursy
+                    </p:panel> 
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

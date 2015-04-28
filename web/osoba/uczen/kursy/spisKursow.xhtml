@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../../projektDekorator.xhtml">
+
+            <ui:define name="top">
+                <div align="center">
+                    <h:form>
+                        <p:panel styleClass="panelStylTop">
+                            <h:outputText value="Wszystkie Kursy" styleClass="TekstStylTop"/>
+                            <h:outputText value="#{kontroler.widok.setFalse()}"/>
+                            <h:outputText value=""/>
+                            <h:panelGrid columns="4" cellpadding="5">
+                                <p:commandButton value="Start" action="uczenStart" style="border-radius: 25px 25px 25px 25px; margin-right: 20px; font-size: 105%"/>
+                                <p:commandButton value="Profil" action="uczenProfil" style="border-radius: 25px 25px 25px 25px; margin-right: 20px; font-size: 105%"/>
+                                <p:commandButton value="Kursy" action="spisKursow" style="border-radius: 25px 25px 25px 25px; margin-right: 20px; font-size: 105%"/>
+                                <p:commandButton value="Wyloguj" action="#{kontroler.wyloguj()}" style="border-radius: 25px 25px 25px 25px; font-size: 105%"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <div align="center">
+                    <h:form id="mindMapForm">
+                        <p:panel id="mindMapPanel" styleClass="panelStylCenter">
+                            <h:outputText value="#{kontroler.uaktualnikMape()}"/>
+                            <p:mindmap value="#{kontroler.mapa.root}" style="width: 100%;height: 600px;border: none; border-radius: 25px 25px 25px 25px; background: rgba(215, 143, 73, 0.6);">
+                                <p:ajax event="select" listener="#{kontroler.onNodeSelect}" update=":formOpis" />
+                                <p:ajax event="dblselect" listener="#{kontroler.onNodeDBSelect}" update="mindMapForm" oncomplete="PF('details').show();" />
+                            </p:mindmap>
+                            <p:dialog widgetVar="details" header="MindMap Node" resizable="false" modal="true" showEffect="fade" hideEffect="explosion">
+                                <h:outputText value="Jest to węzeł aktywny MindMap"/>
+                            </p:dialog>
+                        </p:panel>
+                    </h:form>
+                    <h:form id="formOpis">
+                        <p:panel rendered="#{kontroler.widok.wyswietlOpis}" styleClass="panelStylTresc">
+                            <h:panelGrid columns="1" cellpadding="5">
+                                <h:outputText value="#{kurskontroler.kurs.nazwa}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                <h:outputText value="#{kurskontroler.kurs.opis}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/>
+                                <p:commandButton value="Zapisz się!" action="#{kontroler.dodajKursOsoby()}" style="width: 100%; font-size: x-large"/>
+                            </h:panelGrid>
+                            
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

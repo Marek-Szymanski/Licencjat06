@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./projektDekorator.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <div align="center">
+                        <p:panel styleClass="panelStylCenter" >
+                            
+                            <p:accordionPanel>
+                                <p:tab title="Logowanie">
+                                    <h:form>
+                                        <h:panelGrid columns="2">
+                                            <h:outputLabel value="Login:" for="login" />
+                                            <h:inputText id="login" value="#{kontroler.osobaKontroler.osoba.login}" title="Login" immediate="true" />
+                                            <h:outputLabel value="Haslo:" for="haslo" />
+                                            <h:inputSecret id="haslo" value="#{kontroler.osobaKontroler.osoba.haslo}" title="Haslo" immediate="true" />
+                                            <f:facet name="footer">
+                                                <p:commandButton value="Zaloguj się" action="#{kontroler.osobaKontroler.zaloguj()}" style="width: 100%"/>
+                                            </f:facet>
+                                        </h:panelGrid>
+                                    </h:form>
+                                </p:tab>
+                                <p:tab title="Rejestracja">  
+                                    <p:panel id="rejestracja">
+                                        <h:panelGrid columns="2">
+                                                
+                                                <h:outputLabel value="Imie:" for="imie_in" />
+                                                <h:inputText id="imie_in" value="#{osobakontroler.osobaTemp.imie}" title="Imie" />
+                                                <h:outputLabel value="Nazwisko:" for="nazwisko_in" />
+                                                <h:inputText id="nazwisko_in" value="#{osobakontroler.osobaTemp.nazwisko}" title="Nazwisko" />
+                                                <h:outputLabel value="Mail:" for="mail_in" />
+                                                <h:inputText id="mail_in" value="#{osobakontroler.osobaTemp.mail}" title="Mail" />
+                                                <h:outputLabel value="Login:" for="login_in" />
+                                                <h:inputText id="login_in" value="#{osobakontroler.osobaTemp.login}" title="Login" />
+                                                <h:outputLabel value="Haslo:" for="haslo_in" />
+                                                <p:password feedback="true" id="haslo_in" value="#{osobakontroler.osobaTemp.haslo}" title="Haslo" />
+                                                <f:facet name="footer">
+                                                    <p:commandButton value="Zarejestruj" action="#{osobakontroler.dodajOsobe()}" update="rejestracja" style="width: 100%"/>
+                                                </f:facet>
+                                            </h:panelGrid>
+                                    </p:panel>
+                                            
+                                     
+
+                                </p:tab>
+                            </p:accordionPanel>
+                        </p:panel>
+                    </div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

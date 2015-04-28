@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../projektDekorator.xhtml">
+            
+        <ui:define name="top">
+                <div align="center">
+                    <h:form>
+                        <p:panel styleClass="panelStylTop">
+                            <h:panelGrid columns="3" cellpadding="5">
+                                <h:column>
+                                    <div align="left">
+                                        <p:commandButton value="Wróć" action="administratorMenu" style="border-radius: 90px 90px 90px 90px; width: 100%"/>
+                                    </div>
+                                </h:column>
+                                <f:facet name="header">
+                                    <div align="center">
+                                        <h:outputText value="Spis użytkowników" styleClass="TekstStylTop"/>
+                                        <p:separator style="width: 100%"/>
+                                    </div>
+                                </f:facet>
+                                <h:column>
+                                    <div align="right">
+                                        <p:commandButton value="Wyloguj" action="#{kontroler.wyloguj()}" style="border-radius: 90px 90px 90px 90px; width: 100%"/>
+                                    </div>
+                                </h:column>
+                            </h:panelGrid>      
+                            <h:outputText value="#{kontroler.widok.setFalse()}"/>
+                        </p:panel>
+                    </h:form>
+                </div>
+            </ui:define>
+            
+            
+            <ui:define name="content">
+                <div align="center">
+                    <h:form id="formSpis">
+                        <p:panel styleClass="panelStylTresc">
+                            <h:panelGrid columns="1" cellpadding="10">
+                                <h:outputText value="finder"/>
+                                <h:outputText value="#{osobakontroler.wszytkieOsoby()}"/>
+                                <p:dataTable var="item" value="#{osobakontroler.osobaList}" paginator="true" rows="10"
+                                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                             rowsPerPageTemplate="5,10,15"  id="spis" lazy="true">
+                                    
+                                    <p:column headerText="Id" style="size: 50px">
+                                        <div align="center">
+                                            <h:outputText value="#{item.id}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Imie" sortBy="#{item.imie}" filterBy="#{item.imie}">
+                                        <div align="center">
+                                            <h:outputText value="#{item.imie}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Nazwisko" sortBy="#{item.nazwisko}" filterBy="#{item.nazwisko}">
+                                        <div align="center">
+                                            <h:outputText value="#{item.nazwisko}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Login" sortBy="#{item.mail}" filterBy="#{item.mail}">
+                                        <div align="center">
+                                            <h:outputText value="#{item.login}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Hasło" sortBy="#{item.mail}" filterBy="#{item.mail}">
+                                        <div align="center">
+                                            <h:outputText value="#{item.haslo}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Mail" sortBy="#{item.mail}" filterBy="#{item.mail}" style="width: 150px">
+                                        <div align="center">
+                                            <h:outputText value="#{item.mail}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Status" sortBy="#{item.mail}" filterBy="#{item.mail}">
+                                        <div align="center">
+                                            <h:outputText value="#{item.status}" />
+                                        </div>
+                                    </p:column>
+                                    <p:column headerText="Edycja" sortBy="#{item.mail}" filterBy="#{item.mail}">
+                                        <div align="center">
+                                            <h:commandLink value="Zwiększ uprawnienia" action="#{osobakontroler.nadajStatusAdministratora(item)}" rendered="#{item.status eq 'Uczeń'}"/>
+                                            <h:commandLink value="Odbierz uprawnienia" action="#{osobakontroler.nadajStatusUcznia(item)}" rendered="#{item.status eq 'Administrator'}"/>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGrid>
+                        </p:panel>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
