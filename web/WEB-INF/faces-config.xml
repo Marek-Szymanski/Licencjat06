@@ -7,10 +7,12 @@
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>administratorStart</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Administrator"</if>
             <to-view-id>/osoba/administrator/administratorStart.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>uczenStart</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Uczeń"</if>
             <to-view-id>/osoba/uczen/uczenStart.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -18,14 +20,17 @@
         <from-view-id>/osoba/administrator/*</from-view-id>
         <navigation-case>
             <from-outcome>edycjaBazy</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Administrator"</if>
             <to-view-id>/osoba/administrator/obslugaBazy/edytorBazy.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>administratorProfil</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Administrator"</if>
             <to-view-id>/osoba/administrator/administratorProfil.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>spisUzytkownikow</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Administrator"</if>
             <to-view-id>/osoba/administrator/spisUzytkownikow.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -37,6 +42,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>administratorMenu</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Administrator"</if>
             <to-view-id>/osoba/administrator/administratorStart.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -44,18 +50,22 @@
         <from-view-id>/osoba/uczen/*</from-view-id>
         <navigation-case>
             <from-outcome>uczenStart</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Uczeń"</if>
             <to-view-id>/osoba/uczen/uczenStart.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>uczenProfil</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Uczeń"</if>
             <to-view-id>/osoba/uczen/uczenProfil.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>spisKursow</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Uczeń"</if>
             <to-view-id>/osoba/uczen/kursy/spisKursow.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>doKursu</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Uczeń"</if>
             <to-view-id>/kurs/stronaKursu.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -63,6 +73,7 @@
         <from-view-id>/kurs/stronaKursu.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>wstecz</from-outcome>
+            <if>#{osobakontroler.osoba.status} eq "Uczeń"</if>
             <to-view-id>/osoba/uczen/uczenStart.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
