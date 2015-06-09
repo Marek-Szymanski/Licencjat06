@@ -124,9 +124,13 @@ public class Kontroler implements Serializable{
     public String zapiszLekcje()
     {
         //lekcjaKontroler.dodajLekcje();
+        System.out.println("Do kursu "+kursKontroler.getKurs().getNazwa()+" dodaje lekcje "+lekcjaKontroler.getLekcja().getNazwa());
         kursKontroler.getKurs().getLekcje().add(lekcjaKontroler.getLekcja());
         kursKontroler.edytujKurs();
         widok.setFalse();
+        System.out.println("Zapisano lekcje");
+        lekcjaKontroler.setTempID(-1);
+        lekcjaKontroler.setLekcja(new Lekcja());
         return  "edycjaBazy";
     }
     
@@ -148,6 +152,7 @@ public class Kontroler implements Serializable{
     {
         lekcjaKontroler.edytujLekcje();
         lekcjaKontroler.setLekcja(new Lekcja());
+        lekcjaKontroler.setTempID(-1);
         return "edycjaBazy";
     }
     
@@ -314,35 +319,45 @@ public class Kontroler implements Serializable{
     public void dodajPlik1(FileUploadEvent event)
     {
         lekcjaKontroler.handleFileUpload(event);
-        lekcjaKontroler.getLekcja().setObrazek1(event.getFile().getFileName());
+        String[] temp = lekcjaKontroler.getLekcja().getObrazek();
+        temp[0] = event.getFile().getFileName();
+        lekcjaKontroler.getLekcja().setObrazek(temp);
         widok.setObrazek1(true);
     }
     
     public void dodajPlik2(FileUploadEvent event)
     {
         lekcjaKontroler.handleFileUpload(event);
-        lekcjaKontroler.getLekcja().setObrazek2(event.getFile().getFileName());
+        String[] temp = lekcjaKontroler.getLekcja().getObrazek();
+        temp[1] = event.getFile().getFileName();
+        lekcjaKontroler.getLekcja().setObrazek(temp);
         widok.setObrazek2(true);
     }
     
     public void dodajPlik3(FileUploadEvent event)
     {
         lekcjaKontroler.handleFileUpload(event);
-        lekcjaKontroler.getLekcja().setObrazek3(event.getFile().getFileName());
+        String[] temp = lekcjaKontroler.getLekcja().getObrazek();
+        temp[2] = event.getFile().getFileName();
+        lekcjaKontroler.getLekcja().setObrazek(temp);
         widok.setObrazek3(true);
     }
     
     public void dodajPlik4(FileUploadEvent event)
     {
         lekcjaKontroler.handleFileUpload(event);
-        lekcjaKontroler.getLekcja().setObrazek4(event.getFile().getFileName());
+        String[] temp = lekcjaKontroler.getLekcja().getObrazek();
+        temp[3] = event.getFile().getFileName();
+        lekcjaKontroler.getLekcja().setObrazek(temp);
         widok.setObrazek4(true);
     }
     
     public void dodajPlik5(FileUploadEvent event)
     {
         lekcjaKontroler.handleFileUpload(event);
-        lekcjaKontroler.getLekcja().setObrazek5(event.getFile().getFileName());
+        String[] temp = lekcjaKontroler.getLekcja().getObrazek();
+        temp[4] = event.getFile().getFileName();
+        lekcjaKontroler.getLekcja().setObrazek(temp);
         widok.setObrazek5(true);
     }
     

@@ -51,7 +51,6 @@ public class KategoriaSession {
     
     public List<Kategoria> poNazwa(String nazwa)
     {
-        // Select the employees and the mailing addresses that have the same address.
         CriteriaBuilder cb = manager.getCriteriaBuilder();
         CriteriaQuery cq = cb.createQuery();
         Root e = cq.from(Kategoria.class);

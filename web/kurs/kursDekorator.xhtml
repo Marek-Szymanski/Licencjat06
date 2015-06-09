@@ -52,37 +52,37 @@
                         <h:form>
                             <p:panel>
                                 <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('A')}">                             
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul1}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
-                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek1}" style="text-align: center"/>
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc1}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul[0]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[0]}" style="text-align: center"/>
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc[0]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                     <p:separator/>
                                 </h:panelGrid>
                                 
                                 <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('B')}">                             
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul2}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
-                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek2}" style="text-align: center"/>
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc2}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul[1]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[1]}" style="text-align: center"/>
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc[1]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                     <p:separator/>
                                 </h:panelGrid>
                                 
                                 <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('C')}">                             
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul3}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
-                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek3}" style="text-align: center"/>
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc3}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul[2]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[2]}" style="text-align: center"/>
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc[2]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                     <p:separator/>
                                 </h:panelGrid>
                                 
                                 <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('D')}">                             
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul4}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
-                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek4}" style="text-align: center"/>
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc4}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul[3]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[3]}" style="text-align: center"/>
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc[3]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                     <p:separator/>
                                 </h:panelGrid>
                                 
                                 <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('E')}">                             
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul5}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
-                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek5}" style="text-align: center"/>
-                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc5}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tytul[4]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                    <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[4]}" style="text-align: center"/>
+                                    <h:outputText value="#{lekcjakontroler.lekcja.tresc[4]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                     <p:separator/>
                                 </h:panelGrid>
                             </p:panel>
@@ -91,18 +91,7 @@
                 </ui:insert>
             </div>
         </div>
-        <div id="bottom">
-            <ui:insert name="bottom">
-                <div align="center">
-                    <h:form>
-                        <p:panel>
-                            <h:outputText value="@licencjat Marek Szymański" styleClass="TekstStylBottom"/>
-                        </p:panel>
-                    </h:form>
-                </div>
-            </ui:insert>
-        </div>
-
+        
     </h:body>
 
 </html>

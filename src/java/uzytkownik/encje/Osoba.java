@@ -31,7 +31,7 @@ public class Osoba implements Serializable {
     private String login;
     private String haslo;
     private String status;
-    //private Image zdjecie;
+    
     @OneToMany
     List <KursOsoby> kursy;
 

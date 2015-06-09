@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author marekszymanski
+ * 
  */
 @Entity
 public class Kategoria implements Serializable {
@@ -27,7 +27,9 @@ public class Kategoria implements Serializable {
     private String nazwa;
     @OneToMany
     private List <Kurs> kursy;
-
+    @OneToMany
+    private List <Kategoria> podkategorie;
+    
     public Kategoria() {
         kursy = new ArrayList<>();
     }
@@ -54,6 +56,14 @@ public class Kategoria implements Serializable {
 
     public void setKursy(List<Kurs> kursy) {
         this.kursy = kursy;
+    }
+
+    public List<Kategoria> getPodkategorie() {
+        return podkategorie;
+    }
+
+    public void setPodkategorie(List<Kategoria> podkategorie) {
+        this.podkategorie = podkategorie;
     }
 
     @Override

@@ -33,7 +33,7 @@
                         <p:panel id="panelUpload">
                         <!--Panel 1-->        
                         <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('A')}">                             
-                                <h:outputText value="#{lekcjakontroler.lekcja.tytul1}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tytul[0]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
                                 <h:panelGrid columns="2" rendered="#{!kontroler.widok.obrazek1}" style="text-align: center">
                                     <h:outputText value="Wybierz obrazek do panelu 1:"/>
                                     <p:fileUpload
@@ -44,13 +44,13 @@
                                     process="panelUpload"/>
                                 </h:panelGrid>
                                 
-                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek1}" style="text-align: center"/>
-                                <h:outputText value="#{lekcjakontroler.lekcja.tresc1}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[0]}" style="text-align: center"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tresc[0]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                 <p:separator/>
                             </h:panelGrid>
                         <!--Panel 2-->        
                             <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('B')}">                             
-                                <h:outputText value="#{lekcjakontroler.lekcja.tytul2}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tytul[1]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
                                 <h:panelGrid columns="2" rendered="#{!kontroler.widok.obrazek2}" style="text-align: center">
                                     <h:outputText value="Wybierz obrazek do panelu 2:"/>
                                     <p:fileUpload
@@ -59,13 +59,13 @@
                                     allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
                                     auto="true"/>
                                 </h:panelGrid>
-                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek2}" style="text-align: center"/>
-                                <h:outputText value="#{lekcjakontroler.lekcja.tresc2}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[1]}" style="text-align: center"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tresc[1]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                 <p:separator/>
                             </h:panelGrid>
                         <!--Panel 3-->        
                             <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('C')}">                             
-                                <h:outputText value="#{lekcjakontroler.lekcja.tytul3}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tytul[2]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
                                 <h:panelGrid columns="2" rendered="#{!kontroler.widok.obrazek3}" style="text-align: center">
                                     <h:outputText value="Wybierz obrazek do panelu 3:"/>
                                     <p:fileUpload
@@ -74,13 +74,13 @@
                                     allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
                                     auto="true"/>
                                 </h:panelGrid>
-                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek3}" style="text-align: center"/>
-                                <h:outputText value="#{lekcjakontroler.lekcja.tresc3}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[2]}" style="text-align: center"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tresc[2]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                                 <p:separator/>
                             </h:panelGrid>
                         <!--Panel 4-->        
                             <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('D')}">                             
-                                <h:outputText value="#{lekcjakontroler.lekcja.tytul4}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tytul[3]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
                                 <h:panelGrid columns="2" rendered="#{!kontroler.widok.obrazek4}" style="text-align: center">
                                     <h:outputText value="Wybierz obrazek do panelu 1:"/>
                                     <p:fileUpload
@@ -90,13 +90,13 @@
                                     auto="true"/>
                                 </h:panelGrid>
                                 
-                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek4}" style="text-align: center"/>
-                                <h:outputText value="#{lekcjakontroler.lekcja.tresc4}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/>
+                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[3]}" style="text-align: center"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tresc[3]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/>
                                 <p:separator/>
                             </h:panelGrid>
                         <!--Panel 5-->        
                             <h:panelGrid columns="1" cellpadding="5" style="margin-bottom: 2%" rendered="#{kontroler.sprawdzPanelLekcji('E')}">                             
-                                <h:outputText value="#{lekcjakontroler.lekcja.tytul5}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tytul[4]}" style="alignment-adjust: central; font-weight: bolder; font-size: x-large"/>
                                 <h:panelGrid columns="2" rendered="#{!kontroler.widok.obrazek5}" style="text-align: center">
                                     <h:outputText value="Wybierz obrazek do panelu 5:"/>
                                     <p:fileUpload
@@ -105,15 +105,15 @@
                                     allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
                                     auto="true"/>
                                 </h:panelGrid>
-                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek5}" style="text-align: center"/>
-                                <h:outputText value="#{lekcjakontroler.lekcja.tresc5}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
+                                <h:graphicImage value="resources/pobraneObrazki/#{lekcjakontroler.lekcja.obrazek[4]}" style="text-align: center"/>
+                                <h:outputText value="#{lekcjakontroler.lekcja.tresc[4]}" style="alignment-adjust: central; font-weight: bold; font-size: 110%"/> 
                             </h:panelGrid>
                             <p:commandButton value="Podgląd lekcji" update="panelUpload"/>
                         </p:panel>
                     </h:form>
                     <h:form>
-                        <p:commandButton value="Edytuj" rendered="#{lekcjakontroler.lekcja.id eq lekcjakontroler.tempID}" style="width: 100%" action="#{kontroler.edytujLekcje()}"/>
-                        <p:commandButton value="Zapisz" rendered="#{lekcjakontroler.lekcja.id != lekcjakontroler.tempID}" style="width: 100%" action="#{kontroler.zapiszLekcje()}"/>
+                        <p:commandButton value="Edytuj" rendered="#{lekcjakontroler.tempID == lekcjakontroler.lekcja.id}" style="width: 100%" action="#{kontroler.edytujLekcje()}"/>
+                        <p:commandButton value="Zapisz" rendered="#{lekcjakontroler.tempID != lekcjakontroler.lekcja.id}" style="width: 100%" action="#{kontroler.zapiszLekcje()}"/>
                     </h:form>
                 </div>
             </ui:define>

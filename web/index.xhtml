@@ -20,9 +20,9 @@
                                     <h:form>
                                         <h:panelGrid columns="2">
                                             <h:outputLabel value="Login:" for="login" />
-                                            <h:inputText id="login" value="#{kontroler.osobaKontroler.osoba.login}" title="Login" immediate="true" />
+                                            <p:inputText id="login" value="#{kontroler.osobaKontroler.osoba.login}" title="Login" immediate="true" />
                                             <h:outputLabel value="Haslo:" for="haslo" />
-                                            <h:inputSecret id="haslo" value="#{kontroler.osobaKontroler.osoba.haslo}" title="Haslo" immediate="true" />
+                                            <p:password id="haslo" value="#{kontroler.osobaKontroler.osoba.haslo}" title="Haslo" immediate="true" />
                                             <f:facet name="footer">
                                                 <p:commandButton value="Zaloguj się" action="#{kontroler.osobaKontroler.zaloguj()}" style="width: 100%"/>
                                             </f:facet>
@@ -34,13 +34,13 @@
                                         <h:panelGrid columns="2">
                                                 
                                                 <h:outputLabel value="Imie:" for="imie_in" />
-                                                <h:inputText id="imie_in" value="#{osobakontroler.osobaTemp.imie}" title="Imie" />
+                                                <p:inputText id="imie_in" value="#{osobakontroler.osobaTemp.imie}" title="Imie" />
                                                 <h:outputLabel value="Nazwisko:" for="nazwisko_in" />
-                                                <h:inputText id="nazwisko_in" value="#{osobakontroler.osobaTemp.nazwisko}" title="Nazwisko" />
+                                                <p:inputText id="nazwisko_in" value="#{osobakontroler.osobaTemp.nazwisko}" title="Nazwisko" />
                                                 <h:outputLabel value="Mail:" for="mail_in" />
-                                                <h:inputText id="mail_in" value="#{osobakontroler.osobaTemp.mail}" title="Mail" />
+                                                <p:inputText id="mail_in" value="#{osobakontroler.osobaTemp.mail}" title="Mail" />
                                                 <h:outputLabel value="Login:" for="login_in" />
-                                                <h:inputText id="login_in" value="#{osobakontroler.osobaTemp.login}" title="Login" />
+                                                <p:inputText id="login_in" value="#{osobakontroler.osobaTemp.login}" title="Login" />
                                                 <h:outputLabel value="Haslo:" for="haslo_in" />
                                                 <p:password feedback="true" id="haslo_in" value="#{osobakontroler.osobaTemp.haslo}" title="Haslo" />
                                                 <f:facet name="footer">

@@ -29,9 +29,28 @@
 
             <ui:define name="content">
                 <h:form>
-                    <p:panel styleClass="panelStylTresc">
-                        Moje kursy
-                    </p:panel> 
+                    <div align="center">
+                        <p:panel styleClass="panelStylTresc">
+                            <h:dataTable value="#{osobakontroler.osoba.kursy}" var="item">
+                                    <div align="center">
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Kurs"/>
+                                            </f:facet>
+                                            <p:commandLink value="#{item.kurs.nazwa}" action="#{kontroler.dodajKursOsoby()}"/>
+                                        </h:column>
+                                     </div>
+                                    <div align="center">
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Wynik"/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.wynik}"/>
+                                        </h:column>
+                                    </div>
+                            </h:dataTable>
+                        </p:panel> 
+                    </div>
                 </h:form>
             </ui:define>
 
